@@ -4,12 +4,12 @@ const User = require('../models/User')
 // Login User
 router.post('/login', async (req, res) => {
     try {
-        const userName = req.body.userName;
+        const formUser = req.body.userName;
         const formPassword = req.body.password;
 
         const user = await User.findOne({
             where: {
-                userName: userName
+                userName: formUser
             }
         });
 
@@ -39,9 +39,7 @@ router.post('/register', async (req, res) => {
         const newUser = await User.create(req.body);
 
         // Creates a session and sends a cookie to the client
-        req.session.user_id = userName.id;
-
-        req.session.isAuthenticated = true;
+        req.session.user_id = newUser.id;
 
         res.redirect('/dashboard');
     } catch (err) {

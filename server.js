@@ -42,7 +42,7 @@ app.use('/', [view_routes, user_routes, blog_routes]);
 
 
 // Connect to the db and create all tables based off of our models
-db.sync({ force: false })
+db.sync({ force: true })
     .then(() => {
         // Start server
         app.listen(PORT, () => console.log('Server started on port %s', PORT));
