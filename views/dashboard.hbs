@@ -1,3 +1,5 @@
+<h1 class="page-title">Write your blog below:</h1>
+
 <form action="/blog" method="POST">
     <input name="title" type="text" placeholder="Enter blog title">
     <input name="comment" type="text" placeholder="Enter blog comment">
@@ -7,10 +9,10 @@
 <!-- Display existing blogs -->
 {{#each blogs}}
   <div class="blog-container">
-    <h3 class="blog-title">{{this.title}}</h3>
-    <div class="blog-details">
-      <p class="blog-author">Created by: {{this.User.userName}}</p>
-      <p class="blog-comment">{{this.text}}</p>
+    <div class="top-line">
+      <h3 class="blog-title">{{this.title}}</h3>
+      <p class="blog-author">Posted by {{user.userName}} on {{createdAt}}</p>
     </div>
-  </div>
+    <p class="blog-comment">{{this.text}}</p>
+</div>
 {{/each}}
