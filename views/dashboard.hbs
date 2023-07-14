@@ -1,14 +1,13 @@
-<h1>Dashboard</h1>
-
 <form action="/blog" method="POST">
-    <input name="text" type="text" placeholder="Share your thought!">
-    <button>Submit</button>
+    <input name="title" type="text" placeholder="Enter blog title">
+    <input name="comment" type="text" placeholder="Enter blog comment">
+    <button type="submit">Submit</button>
 </form>
 
-<main class="blogs">
-    {{#each blogs}}
-    <div class="blog">
-        <p>{{text}}</p>
-    </div>
-    {{/each}}
-</main>
+<!-- Display existing blogs -->
+{{#each blogs}}
+  <div class="blog-container">
+    <h3>{{this.title}}</h3>
+    <p>{{this.text}}</p>
+  </div>
+{{/each}}

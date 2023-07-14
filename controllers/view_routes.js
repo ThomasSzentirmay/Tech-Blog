@@ -12,17 +12,20 @@ function isAuthenticated(req, res, next) {
 
 // Show Homepage
 router.get('/', async (req, res) => {
-  let blogs = await Blog.findAll({
-    include: User
-  });
+  try {
+    const blogs = await Blog.findAll({
+      include: User,
+    });
 
-  blogs = blogs.map(t => t.get({plain: true}))
-
-  res.render('index', {
-    isHome: true,
-    isLoggedIn: req.session.user_id,
-    blogs: blogs
-  });
+    res.render('index', {
+      isHome: true,
+      isLoggedIn: req.session.user_id,
+      blogs: blogs.map(blog => blog.get({ plain: true })),
+    });
+  } catch (err) {
+    console.error(err);
+    res.redirect('/');
+  }
 });
 
 // Show Login Page
@@ -45,17 +48,18 @@ router.get('/register', (req, res) => {
 
 // Show Dashboard Page
 router.get('/dashboard', isAuthenticated, async (req, res) => {
-  const user = await User.findByPk(req.session.user_id, {
-    include: Blog
-  });
+  try {
+    const user = await User.findByPk(req.session.user_id, {
+      include: Blog,
+    });
 
-  const blogs = user.blogs.map(t => t.get({plain: true}))
-
-  // The user IS logged in
-  res.render('dashboard', {
-    userName: user.userName,
-    blogs: blogs
-  });
+    res.render('dashboard', {
+      userName: user.userName,
+      blogs: user.blogs.map(blog => blog.get({ plain: true })),
+    });
+  } catch (err) {
+    console.error(err);
+    res.redirect('/');
+  }
 });
-
 module.exports = router;

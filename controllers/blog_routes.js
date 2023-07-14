@@ -13,12 +13,23 @@ function isAuthenticated(req, res, next) {
 
 // Add a blog
 router.post('/blog', isAuthenticated, async (req, res) => {
-    await Blog.create({
-        text: req.body.text,
-        userId: req.session.user_id
-    });
+    try {
+        const { title, comment } = req.body;
+        const userId = req.session.user_id;
 
-    res.redirect('/dashboard');
+        const newBlog = await Blog.create({
+            title, // Add the title property here
+            comment,
+            text: comment,
+            userId
+        });
+
+        res.redirect('/dashboard');
+    } catch (err) {
+        // Handle error
+        console.error(err);
+        res.redirect('/dashboard');
+    }
 });
 
 module.exports = router;

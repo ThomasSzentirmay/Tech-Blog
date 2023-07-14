@@ -1,19 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
 const db = require('../db/connection');
 
-class Blog extends Model { }
+class Blog extends Model {}
 
-Blog.init({
+Blog.init(
+  {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 1,
+      },
+    },
     text: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validation: {
-            min: 3
-        }
-    }
-}, {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 1,
+      },
+    },
+  },
+  {
     sequelize: db,
-    modelName: 'blog'
-})
+    modelName: 'blog',
+  }
+);
 
 module.exports = Blog;
