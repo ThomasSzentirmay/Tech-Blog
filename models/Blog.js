@@ -19,6 +19,17 @@ Blog.init(
         min: 1,
       },
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+      get() {
+        // Format the date as MM/DD/YYYY
+        const date = this.getDataValue('createdAt');
+        const formattedDate = date.toLocaleDateString('en-US');
+        return formattedDate;
+      },
+    },
   },
   {
     sequelize: db,

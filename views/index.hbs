@@ -1,9 +1,11 @@
-<h1>See What Others Are Thinking</h1>
+<h1 class="page-title">See What Others Are Thinking</h1>
 
 {{#each blogs}}
   <div class="blog-container">
-    <h3>{{this.title}}</h3>
-    <p>{{this.text}}</p>
-    <p>Created by: {{user.userName}}</p>
+        <div class="top-line">
+            <h3 class="blog-title">{{this.title}}</h3>
+            <p class="blog-author">Posted by {{user.userName}} on {{createdAt}}</p>
+        </div>
+    <p class="blog-comment">{{this.text}}</p>
   </div>
 {{/each}}
