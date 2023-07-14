@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
   try {
     const blogs = await Blog.findAll({
       include: User,
+      order: [['createdAt', 'DESC']]
     });
 
     res.render('index', {
@@ -51,6 +52,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
   try {
     const user = await User.findByPk(req.session.user_id, {
       include: Blog,
+      order: [[Blog, 'createdAt', 'DESC']]
     });
 
     res.render('dashboard', {

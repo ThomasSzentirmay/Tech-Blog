@@ -2,7 +2,8 @@
 
 <form action="/blog" method="POST">
     <input name="title" type="text" placeholder="Enter blog title">
-    <input name="comment" type="text" placeholder="Enter blog comment">
+    {{!-- <input name="comment" type="text" placeholder="Enter blog comment" class="comment-input"> --}}
+    <textarea id="blog-comment" name="comment" placeholder="Enter your blog comment"></textarea>
     <button type="submit">Submit</button>
 </form>
 

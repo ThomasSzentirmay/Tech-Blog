@@ -90,6 +90,7 @@ form .show-password input[type="checkbox"] {
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;
+  margin-top: 45px;
 }
 
 .blog-details {
@@ -119,4 +120,11 @@ form .show-password input[type="checkbox"] {
 
 .top-line .blog-title {
   font-size: 25px;
+}
+
+#blog-comment {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Set a minimum height */
+  max-height: 300px; /* Set a maximum height */
+  overflow-y: auto; /* Add a scrollbar when needed */
 }
