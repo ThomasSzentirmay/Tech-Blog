@@ -7,6 +7,8 @@ const session = require('express-session');
 // Import our db connection
 const db = require('./db/connection');
 
+const methodOverride = require('method-override');
+
 // Import routes
 const view_routes = require('./controllers/view_routes');
 const user_routes = require('./controllers/user_routes');
@@ -19,6 +21,7 @@ const PORT = process.env.PORT || 3333;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 // Setup Handlebars Template Engine
 app.engine('hbs', engine({
