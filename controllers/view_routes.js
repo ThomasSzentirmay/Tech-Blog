@@ -53,7 +53,7 @@ router.get('/dashboard', isAuthenticated, async (req, res) => {
 
   // The user IS logged in
   res.render('dashboard', {
-    userName: userName,
+    userName: user.userName,
     blogs: blogs
   });
 });
