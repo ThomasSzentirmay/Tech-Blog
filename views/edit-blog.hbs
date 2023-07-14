@@ -1,8 +1,8 @@
 <h1 class="page-title">Update your post:</h1>
 
-<form action="/blogs/{{blog.id}}?_method=PUT" method="POST">
-  <input placeholder="Enter updated title" type="hidden" name="_method" value="PUT">
-  <input placeholder="Enter updated comment" type="text" name="title" value="{{blog.title}}">
-  <textarea name="text">{{blog.text}}</textarea>
+<form action="/blogs/{{this.id}}/update" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="text" name="title" value="{{this.title}}">
+  <input type="text" name="text" value="{{this.text}}">
   <button type="submit">Update</button>
 </form>

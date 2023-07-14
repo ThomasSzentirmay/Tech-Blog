@@ -8,9 +8,9 @@ function togglePasswordVisibility() {
 }
 
 
-const blogCommentInput = document.getElementById('blog-comment');
+// const blogCommentInput = document.getElementById('blog-comment');
 
-blogCommentInput.addEventListener('input', function () {
-  this.style.height = 'auto'; // Reset the height
-  this.style.height = `${this.scrollHeight}px`; // Set the height to match the scrollHeight
-});
+// blogCommentInput.addEventListener('input', function () {
+//   this.style.height = 'auto';
+//   this.style.height = `${this.scrollHeight}px`; 
+// });

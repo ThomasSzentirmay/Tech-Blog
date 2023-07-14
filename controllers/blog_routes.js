@@ -57,17 +57,22 @@ router.delete('/blogs/:id', isAuthenticated, async (req, res) => {
     }
 });
 
-// Update a blog post (GET)
+// Render blog post edit form
 router.get('/blogs/:id/edit', isAuthenticated, async (req, res) => {
     try {
-        const blog = await Blog.findByPk(req.params.id);
+        const { id } = req.params;
+
+        // Find the blog post by ID
+        const blog = await Blog.findByPk(id);
 
         if (!blog) {
-            // Handle case where blog post is not found
-            return res.redirect('/dashboard');
+            return res.status(404).send('Blog post not found');
         }
 
         res.render('edit-blog', { blog });
+
+        console.log('edit page rendered successfully');
+
     } catch (err) {
         console.error(err);
         res.redirect('/dashboard');
@@ -75,10 +80,10 @@ router.get('/blogs/:id/edit', isAuthenticated, async (req, res) => {
 });
 
 // Update a blog post
-router.put('/blogs/:id', isAuthenticated, async (req, res) => {
+router.put('/blogs/:id/update', isAuthenticated, async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, text } = req.body;
+        const { title, comment } = req.body;
 
         // Find the blog post by ID
         const blog = await Blog.findByPk(id);
@@ -88,9 +93,17 @@ router.put('/blogs/:id', isAuthenticated, async (req, res) => {
         }
 
         // Update the blog post
-        blog.title = title;
-        blog.text = text;
-        await blog.save();
+        await Blog.update(
+            {
+                title: title,
+                comment: comment
+            },
+            {
+                where: {
+                    id: id
+                }
+            }
+        );
 
         res.redirect('/dashboard');
     } catch (err) {
