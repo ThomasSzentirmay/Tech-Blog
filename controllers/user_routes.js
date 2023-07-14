@@ -41,6 +41,8 @@ router.post('/register', async (req, res) => {
         // Creates a session and sends a cookie to the client
         req.session.user_id = newUser.id;
 
+        req.session.isAuthenticated = true;
+
         res.redirect('/dashboard');
     } catch (err) {
         const dupeName = err.errors.find(e => e.path === 'userName');
