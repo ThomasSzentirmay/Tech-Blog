@@ -79,38 +79,41 @@ router.get('/blogs/:id/edit', isAuthenticated, async (req, res) => {
     }
 });
 
-// Update a blog post
-router.put('/blogs/:id/update', isAuthenticated, async (req, res) => {
+router.put('/:id/update', isAuthenticated, async (req, res) => {
     try {
-        const { id } = req.params;
         const { title, comment } = req.body;
-
-        // Find the blog post by ID
-        const blog = await Blog.findByPk(id);
-
-        if (!blog) {
-            return res.status(404).send('Blog post not found');
-        }
-
-        // Update the blog post
-        await Blog.update(
-            {
-                title: title,
-                comment: comment
-            },
-            {
-                where: {
-                    id: id
-                }
-            }
-        );
-
-        res.redirect('/dashboard');
+        const { id } = req.params;
+  
+      console.log('Received update request for blog id:', id);
+  
+      // Find the blog post by ID
+      const blog = await Blog.findByPk(id);
+  
+      console.log('Found blog:', blog);
+  
+      if (!blog) {
+        console.log('Blog post not found');
+        return res.status(404).send('Blog post not found');
+      }
+  
+      // Update the blog post
+      console.log('Updating blog post:', blog.title);
+  
+      await blog.update({
+        title: title,
+        comment: comment
+      });
+  
+      console.log('Blog post updated successfully:', blog.title);
+  
+      res.redirect('/dashboard');
     } catch (err) {
-        console.error(err);
-        res.redirect('/dashboard');
+      console.error(err);
+      res.redirect('/dashboard');
     }
-});
+  });
+  
+  
 
 module.exports = router;
 
