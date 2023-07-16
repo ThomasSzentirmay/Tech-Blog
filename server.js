@@ -9,8 +9,19 @@ const view_routes = require('./controllers/view_routes');
 const user_routes = require('./controllers/user_routes');
 const blog_routes = require('./controllers/blog_routes');
 
+
+
+const cloudConnection = {
+	connectionString: process.env.DATABASE_URL,
+	multipleStatements: true
+}
+
 const app = express();
 const PORT = process.env.PORT || 3333;
+
+
+
+
 
 // Middleware
 app.use(express.json());
@@ -38,7 +49,16 @@ app.set('views', './views');
 app.use('/', [view_routes, user_routes, blog_routes]);
 
 // Connect to the db and create all tables based on our models
-db.sync({ force: false })
+// db.sync({ force: false })
+//   .then(() => {
+//     // Start server
+//     app.listen(PORT, () => console.log('Server started on port %s', PORT));
+//   });
+
+db.sync({ 
+  connectionString: cloudConnection,
+  multipleStatements: true
+}) // Pass the cloudConnection as the connection string
   .then(() => {
     // Start server
     app.listen(PORT, () => console.log('Server started on port %s', PORT));
