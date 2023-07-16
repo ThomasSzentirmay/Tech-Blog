@@ -123,8 +123,12 @@ form .show-password input[type="checkbox"] {
 }
 
 #blog-comment {
-  resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Set a minimum height */
-  max-height: 300px; /* Set a maximum height */
-  overflow-y: auto; /* Add a scrollbar when needed */
+  resize: vertical; 
+  min-height: 100px; 
+  max-height: 300px; 
+  overflow-y: auto; 
+}
+
+.hidden {
+  display: none;
 }

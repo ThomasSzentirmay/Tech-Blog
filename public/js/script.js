@@ -1,3 +1,4 @@
+// Show Password Functionality
 function togglePasswordVisibility() {
   const passwordField = document.getElementById("password");
   if (passwordField.type === "password") {
@@ -8,9 +9,10 @@ function togglePasswordVisibility() {
 }
 
 
-// const blogCommentInput = document.getElementById('blog-comment');
-
-// blogCommentInput.addEventListener('input', function () {
-//   this.style.height = 'auto';
-//   this.style.height = `${this.scrollHeight}px`; 
-// });
+// Updated Blog Button Functionality
+function toggleUpdateContainer(id) {
+  const updateContainer = document.getElementById(`update-container-${id}`);
+  if (updateContainer) {
+    updateContainer.classList.toggle('hidden');
+  }
+}

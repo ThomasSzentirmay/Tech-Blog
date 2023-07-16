@@ -1,8 +1,0 @@
-<h1 class="page-title">Update your post:</h1>
-
-<form action="{{#if this.id}}/blogs/{{this.id}}/update{{else}}/blogs/update{{/if}}?_method=PUT" method="POST">
-  <input type="hidden" name="_method" value="PUT">
-  <input type="text" name="title" value="{{this.title}}">
-  <input type="text" name="comment" value="{{this.comment}}">
-  <button type="submit">Update</button>
-</form>

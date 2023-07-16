@@ -15,11 +15,21 @@
     </div>
     <p class="blog-comment">{{this.text}}</p>
     <div class="blog-actions">
+      {{!-- DELETE BLOG --}}
       <form action="/blogs/{{this.id}}?_method=DELETE" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit" class="btn-delete">Delete</button>
-        <a href="/blogs/{{this.id}}/edit" class="btn-update">Update</a>
       </form>
+      {{!-- UPDATE BLOG --}}
+      <div id="update-container-{{this.id}}" class="hidden">
+        <form action="/blogs/{{this.id}}/update?_method=PUT" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="text" name="title" value="{{this.title}}">
+          <input type="text" name="comment" value="{{this.comment}}">
+          <button type="submit">Update</button>
+        </form>
+      </div>
+      <button id="update-option" class="btn-update" onclick="toggleUpdateContainer({{this.id}})">Update this blog</button>
     </div>
-</div>
+  </div>
 {{/each}}
