@@ -1,12 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
 const { hash, compare } = require('bcrypt');
 const db = require('../db/connection');
-const Blog = require('./Blog');
-
 
 class User extends Model { }
 
 User.init({
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true
+  },
   userName: {
     type: DataTypes.STRING,
     unique: true, // users can't reuse emails when signing up
@@ -36,8 +40,5 @@ User.prototype.validatePass = async function(formPassword) {
 
   return isValid;
 }
-
-User.hasMany(Blog);
-Blog.belongsTo(User);
 
 module.exports = User;

@@ -1,18 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const db = require('../db/connection');
 
-class Blog extends Model {}
+class Comment extends Model {}
 
-Blog.init(
+Comment.init(
   {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        min: 1,
-      },
-    },
-    text: {
+    comment: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -24,7 +17,6 @@ Blog.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
       get() {
-        // Format the date as MM/DD/YYYY
         const date = this.getDataValue('createdAt');
         const formattedDate = date.toLocaleDateString('en-US');
         return formattedDate;
@@ -33,10 +25,10 @@ Blog.init(
   },
   {
     sequelize: db,
-    modelName: 'blog',
+    modelName: 'comment',
   }
 );
 
 // Create associations
 
-module.exports = Blog;
+module.exports = Comment;
