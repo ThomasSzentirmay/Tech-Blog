@@ -177,3 +177,11 @@ form .show-password input[type="checkbox"] {
   margin: 0 auto;
   padding: 0;
 }
+
+.comments {
+  color: #fff;
+}
+
+.comment-text {
+  margin-top: 35px;
+}

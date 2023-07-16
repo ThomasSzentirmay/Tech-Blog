@@ -9,13 +9,15 @@
     <p class="blog-comment">{{this.text}}</p>
 
     <div class="comments">
+      <hr>
       <h4>Comments:</h4>
       {{#each comments}}
         <div class="comment">
-          <p class="comment-text">{{comment}}</p>
+          <p class="comment-text">"{{comment}}"</p>
+          <br>
           <p class="comment-details">
             <span class="comment-user">Commented by {{user.userName}}</span>
-            <span class="comment-date">{{createdAt}}</span>
+            <span class="comment-date">on {{createdAt}}</span>
           </p>
         </div>
       {{/each}}
