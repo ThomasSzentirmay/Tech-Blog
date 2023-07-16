@@ -61,19 +61,19 @@ form {
   flex-direction: column;
 }
 
-form > * {
+form * {
   padding: 7px 10px;
   margin: 3px 0;
 }
 
 .btn-delete {
-  width: 100%;
+  width: 100px;
   background-color: #dc2626;
-  border: 2px solid #500000;
   border-radius: 4px;
   display: inline;
   box-shadow: none;
   cursor: pointer;
+  margin: 0 auto;
 
   transition: all .5s;
 }
@@ -81,6 +81,23 @@ form > * {
 .btn-delete:hover {
   background-color: #b91c1c;
 } 
+
+.btn-update {
+  background-color: #dc2626;
+  border-radius: 4px;
+  display: inline;
+  cursor: pointer;
+  transition: all .5s;
+  display: flex;
+  justify-content: center;
+  padding: 7px 10px;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.btn-update:hover {
+  background-color: #b91c1c;
+}
 
 form h1 {
   text-align: center;
@@ -156,8 +173,7 @@ form .show-password input[type="checkbox"] {
   display: none;
 }
 
-.btn-update {
-  padding: 7px 10px;
+.update-option-container {
   margin: 0 auto;
-  width: 400px;
+  padding: 0;
 }
