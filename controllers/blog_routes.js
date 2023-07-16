@@ -128,10 +128,10 @@ router.post('/blogs/:id/comments', isAuthenticated, async (req, res) => {
       blogId: blog.id,
     });
 
-    res.redirect('/dashboard');
+    res.redirect('/');
   } catch (err) {
     console.error(err);
-    res.redirect('/dashboard');
+    res.redirect('/');
   }
 });
 
