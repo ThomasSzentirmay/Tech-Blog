@@ -2,7 +2,7 @@
 
 <form action="/blog" method="POST">
     <input name="title" type="text" placeholder="Enter blog title">
-    <textarea id="blog-comment" name="comment" placeholder="Enter your blog comment"></textarea>
+    <textarea id="blog-comment" name="comment" placeholder="Enter your blog comment..."></textarea>
     <button type="submit">Submit</button>
 </form>
 
@@ -18,21 +18,20 @@
       {{!-- DELETE BLOG --}}
       <form action="/blogs/{{this.id}}?_method=DELETE" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <button type="submit" class="btn-delete form-btns">Delete</button>
+        <button type="submit" class="btn-delete">Delete</button>
       </form>
       {{!-- UPDATE BLOG --}}
-      <form>
-        <button id="update-option" class="btn-update form-btns" onclick="toggleUpdateContainer({{this.id}})">Update</button>
-      </form>
+      <div id="update-option-container-{{this.id}}" class="update-option-container btn-update">
+        <button type="button" id="update-option-{{this.id}}" class="btn-update" onclick="toggleUpdateContainer({{this.id}})">Update Post</button>
+      </div>
       <div id="update-container-{{this.id}}" class="hidden">
         <form action="/blogs/{{this.id}}/update?_method=PUT" method="POST">
           <input type="hidden" name="_method" value="PUT">
           <input type="text" name="title" value="{{this.title}}">
-          <input type="text" name="comment" value="{{this.comment}}">
-          <button class='form-btns' type="submit">Update</button>
+           <textarea id="blog-comment" name="comment" placeholder="Enter your updated blog comment...">{{this.comment}}</textarea>
+          <button type="submit">Update</button>
         </form>
       </div>
     </div>
   </div>
 {{/each}}
-

@@ -12,7 +12,10 @@ function togglePasswordVisibility() {
 // Updated Blog Button Functionality
 function toggleUpdateContainer(id) {
   const updateContainer = document.getElementById(`update-container-${id}`);
-  if (updateContainer) {
+  const updateOptionContainer = document.getElementById(`update-option-container-${id}`);
+  
+  if (updateContainer && updateOptionContainer) {
     updateContainer.classList.toggle('hidden');
+    updateOptionContainer.style.display = 'none';
   }
 }
