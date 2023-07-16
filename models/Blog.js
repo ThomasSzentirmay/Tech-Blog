@@ -13,7 +13,7 @@ Blog.init(
       },
     },
     text: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
       allowNull: false,
       validate: {
         min: 1,

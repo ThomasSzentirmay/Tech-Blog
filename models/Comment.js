@@ -6,7 +6,7 @@ class Comment extends Model {}
 Comment.init(
   {
     comment: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(500),
       allowNull: false,
       validate: {
         min: 1,

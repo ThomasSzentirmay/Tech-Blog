@@ -23,7 +23,6 @@ router.get('/', async (req, res) => {
     });
 
     const plainBlog = blogs.map(blog => blog.get({ plain: true }));
-    console.log(plainBlog[0].comments)
 
     res.render('index', {
       isHome: true,
