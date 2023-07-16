@@ -23,7 +23,7 @@ app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true,
-  cookie: { httpOnly: true, maxAge: 300000 },
+  cookie: { httpOnly: true, maxAge: 1000000 },
 }));
 
 // Setup Handlebars Template Engine
