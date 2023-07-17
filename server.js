@@ -39,17 +39,8 @@ app.set('views', './views');
 // Load Routes
 app.use('/', [view_routes, user_routes, blog_routes]);
 
-// Connect to the db and create all tables based on our models
-// db.sync({ force: false })
-//   .then(() => {
-//     // Start server
-//     app.listen(PORT, () => console.log('Server started on port %s', PORT));
-//   });
 
-db.sync({ 
-  connectionString: cloudConnection,
-  multipleStatements: true
-}) // Pass the cloudConnection as the connection string
+db.sync() 
   .then(() => {
     // Start server
     app.listen(PORT, () => console.log('Server started on port %s', PORT));
