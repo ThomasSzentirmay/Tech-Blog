@@ -8,7 +8,7 @@ A large problem I ran into was the commenting system not functioning as intended
 
 ![Screenshot 2023-07-16 134658](https://github.com/ThomasSzentirmay/ORM-ecommerce-backend/assets/132217664/c45989ac-90e5-44f1-8bd8-33a65d990a22)
 
-Heroku Deployed Link: 
+Heroku Deployed Link: https://tech-blog-thomas-4502fa5d5b96.herokuapp.com/
 
 ## Installation
 
