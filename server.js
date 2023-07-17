@@ -10,17 +10,8 @@ const user_routes = require('./controllers/user_routes');
 const blog_routes = require('./controllers/blog_routes');
 
 
-
-const cloudConnection = {
-	connectionString: process.env.DATABASE_URL,
-	multipleStatements: true
-}
-
 const app = express();
 const PORT = process.env.PORT || 3333;
-
-
-
 
 
 // Middleware
